@@ -21,13 +21,13 @@ def main():
     config = get_config()
     translator = YouDao()  #
     arxiv_agent = Arxiv(config=config, translator=translator)
-    results = arxiv_agent.search_arxiv(days_before=7, max_results=1000)
+    results,num_papers = arxiv_agent.search_arxiv(days_before=7, max_results=1000)
     published_date_str = arxiv_agent.today
     with open(fr'.\daily-paper\{published_date_str}-pre-{days_before}days.md', 'w', encoding='utf-8') as f:
         for result in results:
             f.write(result)
         f.close()
-    print(f"I've collected the previous {days_before} weekdays published papers.")
+    print(f"I've collected the previous {days_before} weekdays total {num_papers} published papers.")
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ class Arxiv:
         self.week = datetime.datetime.now().weekday()
         self.published_date_str = None
     
-    def search_arxiv(self, days_before: int, max_results: int) -> list:
+    def search_arxiv(self, days_before: int, max_results: int) -> (list,int):
         # Search the papers published in the last  'days_before' weekdays
         if days_before == 0:
             raise ValueError('variable days_before should be greater than 0')
@@ -47,11 +47,11 @@ class Arxiv:
                                     sort_by=arxiv.SortCriterion.SubmittedDate,
                                     sort_order=arxiv.SortOrder.Descending,
                                     )
-            results = self.search_keyword(articles)
+            results,num_papers = self.search_keyword(articles)
             # 'abs:"semantic parsing" AND abs:"parsers"'
-        return results
+        return results,num_papers
     
-    def search_keyword(self, articles) -> list:
+    def search_keyword(self, articles) -> (list,int):
         final_year = self.published_date_str[:4]
         final_month = self.published_date_str[4:6]
         final_day = self.published_date_str[6:]
@@ -97,7 +97,7 @@ class Arxiv:
         scores = np.array(scores)
         results = results[:1] + [f"## Paper {id + 1} : " + x for id, (_, x) in
                                  enumerate(sorted(zip(scores, results[1:]), reverse=True))]
-        return results
+        return results,len(np.array(scores))
     
     def calc_score(self, abstract: str) -> (float, list):
         scores = []
