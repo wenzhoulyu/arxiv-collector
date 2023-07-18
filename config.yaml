@@ -1,13 +1,54 @@
 # subject: the subject of the papers you want to collect
 #subject: 'cat:cs.RO OR cat:cs.AI OR cat:cs.ML'
-subject: 'cat:cs.*'
+#subject: 'cat:cs.RO'
+subject_query: cat:cs.*
+
+keyword_query:
+  a :
+    keywords:
+        - manipulation
+        - robot
+        - RL
+    weight: 6
+
+  b :
+    keywords:
+        - manipulation
+        - RL
+    weight: 5
+
+  c:
+    keywords:
+        - manipulation
+        - robot
+    weight: 3
+
+  d:
+    keywords:
+        - robot
+        - LLM
+    weight: 4
+  e:
+    keywords:
+        - robot
+        - VLM
+    weight: 4
+#  e:
+#    keywords: 'LLM'
+#    weight: 1
+#  f:
+#    keywords: 'VLM'
+#    weight: 1
+#  g:
+#    keywords: 'vision-language'
+#    weight: 1
 
 # keywords: the keywords of the papers you want to collect, and give the keywords a weight (score)
-keywords:
-        manipulation: 1
-        vision-language: 1
-        LLM: 1
-        reinforcement learning: 3
-
-# score_threshold: the threshold of the score, if the score of the paper is higher than the threshold, it will be collected
-score_threshold: 2
+#keywords:
+#        manipulation: 1
+#        vision-language: 1
+#        LLM: 1
+#        reinforcement learning: 3
+#
+## score_threshold: the threshold of the score, if the score of the paper is higher than the threshold, it will be collected
+#score_threshold: 2

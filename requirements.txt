@@ -1,0 +1,16 @@
+arxiv==1.4.8
+beautifulsoup4==4.12.2
+certifi==2023.5.7
+charset-normalizer==3.2.0
+deep-translator==1.11.4
+feedparser==6.0.10
+idna==3.4
+numpy==1.24.4
+pip==23.1.2
+PyYAML==6.0.1
+requests==2.31.0
+setuptools==67.8.0
+sgmllib3k==1.0.0
+soupsieve==2.4.1
+urllib3==2.0.3
+wheel==0.38.4
