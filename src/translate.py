@@ -43,8 +43,12 @@ class YouDao(TranslatorBase):
         html = response.read().decode("utf-8")
         
         target = json.loads(html)
-        
-        return target["translateResult"][0][0]["tgt"]
+        # print(target["translateResult"])
+        # exit()
+        result = ''
+        for tgt in target["translateResult"][0]:
+            result += tgt["tgt"]
+        return result
 
 
 class Google(TranslatorBase):
@@ -57,4 +61,5 @@ class Google(TranslatorBase):
         self.translator = GoogleTranslator(source='auto', target='zh-CN', proxies=proxies_example)
     
     def translate(self, text: str) -> str:
-        return self.translator.translate(text).encode('utf-8').decode('utf-8')
+        result = self.translator.translate(text).encode('utf-8').decode('utf-8')
+        return result

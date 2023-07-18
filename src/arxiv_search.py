@@ -86,7 +86,6 @@ class Arxiv:
                     title_ch = f"{title} - _**标题**_: {title_ch_str}" + '\n'
                     abstract_ch_str = self.translator.translate(abstract_str)
                     abstract_ch = f"- _**摘要**_: {abstract_ch_str} \n"
-                    print(title_ch_str)
                     results.append(f'{title}{description}{abstract}{title_ch}{abstract_ch}{url}\n\n')
                 else:
                     results.append(f'{title}{description}{abstract}{url}\n\n')
