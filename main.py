@@ -17,12 +17,13 @@ def get_config() -> dict:
 
 
 def main():
-    days_before = 7
+    days_before = 1
     config = get_config()
-    translator = YouDao()  #
+    translator = Google()  #
     arxiv_agent = Arxiv(config=config, translator=translator)
-    results,num_papers = arxiv_agent.search_arxiv(days_before=7, max_results=1000)
+    results, num_papers = arxiv_agent.search_arxiv(days_before=days_before, max_results=500)
     published_date_str = arxiv_agent.today
+    # with open(fr'.\daily-paper\{published_date_str}-pre-{days_before}days.md', 'w', encoding='utf-8') as f:
     with open(fr'.\daily-paper\{published_date_str}-pre-{days_before}days.md', 'w', encoding='utf-8') as f:
         for result in results:
             f.write(result)
