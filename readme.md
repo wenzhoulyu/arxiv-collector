@@ -12,51 +12,26 @@ subject_query: 'cat:cs.*'
 
 # keyword_query: the keywords of the papers you want to collect, and give the keywords a weight (score)
 keyword_query:
-  a :
+  key1:
     keywords:
-        - manipulation
-        - robot
-        - RL
+      - "manipulation"
+      - "LLM, VLM"
+    weight: 2
+  key2:
+    keywords:
+      - "RL"
+      - "LLM"
+      - "manipulation"
     weight: 6
-
-  b :
-    keywords:
-        - manipulation
-        - RL
-    weight: 5
-
-  c:
-    keywords:
-        - manipulation
-        - robot
-    weight: 3
-
-  d:
-    keywords:
-        - manipulation
-        - robot
-        - LLM
-    weight: 4
-  e:
-    keywords:
-        - manipulation
-        - robot
-        - VLM
-    weight: 4
-#  e:
-#    keywords: 'LLM'
-#    weight: 1
-#  f:
-#    keywords: 'VLM'
-#    weight: 1
-#  g:
-#    keywords: 'vision-language'
-#    weight: 1
-
+# the keyword_query will be formated as the pair:
+# e.g. key1: keywords: [(manipulation, LLM),(manipulation, VLM)] weight: 2
+#      key2: keywords: [(RL, LLM, manipulation)]
+# the keywords in tuple will be connected by "AND"
 ```
 
 ### Tricks
 - You can set the `days_before` to collect the papers in the past weekdays.
+- You can set the `strict=True` to let the keywords in the abstract of collected papers.
 - You can set the `translator` to translate the title and abstract of the papers to your language (e.g. Chinese).
 - The paper without keywords will be listed at the end of the markdown file. Though it doesn't include any keywords, it may be interesting to you.
 
