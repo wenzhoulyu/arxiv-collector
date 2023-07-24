@@ -55,8 +55,8 @@ class Google(TranslatorBase):
     def __init__(self):
         # here pls set your own proxy
         proxies_example = {
-            "https": "127.0.0.1:50415",
-            "http": "127.0.0.1:50415"
+            "https": "",
+            "http": ""
         }
         self.translator = GoogleTranslator(source='auto', target='zh-CN', proxies=proxies_example)
     
